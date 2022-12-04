@@ -8,10 +8,11 @@ import (
 
 func main() {
 
-	foodDisplayModels := food.GetFoodDisplayModels(334147)
+	foodDisplayModel := food.GetFoodDisplayModel(334147)
 
-	for _, f := range foodDisplayModels {
+	fmt.Println(`Results for: `, foodDisplayModel.Description)
+
+	for _, f := range foodDisplayModel.FoodDisplayDetails {
 		fmt.Println(f.Name, f.Amount, f.UnitName)
 	}
-
 }

@@ -62,6 +62,11 @@ type MeasureUnit struct {
 }
 
 type FoodDisplayModel struct {
+	Description        string
+	FoodDisplayDetails []FoodDisplayDetail
+}
+
+type FoodDisplayDetail struct {
 	Name     string
 	Amount   float32
 	UnitName string
