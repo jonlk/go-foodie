@@ -60,3 +60,9 @@ type MeasureUnit struct {
 	Name         string
 	Abbreviation string
 }
+
+type FoodDisplayModel struct {
+	Name     string
+	Amount   float32
+	UnitName string
+}
