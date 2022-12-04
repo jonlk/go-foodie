@@ -8,8 +8,11 @@ import (
 	"os"
 )
 
-func GetFoodResult() Food {
-	url := fmt.Sprintf(`https://api.nal.usda.gov/fdc/v1/food/334147?api_key=%s`, os.Getenv("USDA_API_KEY"))
+func getFoodResult(fdcId int) Food {
+
+	url := fmt.Sprintf(`https://api.nal.usda.gov/fdc/v1/food/%v?api_key=%s`,
+		fdcId,
+		os.Getenv("USDA_API_KEY"))
 
 	foodresult := Food{}
 

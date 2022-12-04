@@ -8,16 +8,10 @@ import (
 
 func main() {
 
-	foodResult := food.GetFoodResult()
+	foodDisplayModels := food.GetFoodDisplayModels(334147)
 
-	fmt.Println(`Results For`, foodResult.Description)
-
-	// foodDisplayModels := []food.FoodDisplayModel{}
-	for _, f := range foodResult.FoodNutrients {
-		if f.Amount > 0 {
-			//foodDisplayModel := food.FoodDisplayModel{}
-			//foodDisplayModels = append(foodDisplayModels, foodDisplayModel)
-			fmt.Println(f.Nutrient.Name, f.Amount, f.Nutrient.UnitName)
-		}
+	for _, f := range foodDisplayModels {
+		fmt.Println(f.Name, f.Amount, f.UnitName)
 	}
+
 }
