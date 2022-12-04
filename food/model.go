@@ -15,8 +15,9 @@ func GetFoodDisplayModel(fdcId int) FoodDisplayModel {
 		if f.Amount > 0 {
 
 			foodDisplayDetail := FoodDisplayDetail{
-				Name:   f.Nutrient.Name,
-				Amount: f.Amount,
+				Name:     f.Nutrient.Name,
+				Amount:   f.Amount,
+				UnitName: f.Nutrient.UnitName,
 			}
 
 			foodDisplayModel.FoodDisplayDetails =
