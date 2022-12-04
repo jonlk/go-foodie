@@ -2,30 +2,34 @@ package food
 
 import "sort"
 
-func GetFoodDisplayModels(fdcId int) []FoodDisplayModel {
+func GetFoodDisplayModel(fdcId int) FoodDisplayModel {
 
 	foodResult := getFoodResult(fdcId)
-	foodDisplayModels := []FoodDisplayModel{}
+
+	foodDisplayModel := FoodDisplayModel{
+		Description: foodResult.Description,
+	}
 
 	for _, f := range foodResult.FoodNutrients {
 
 		if f.Amount > 0 {
 
-			foodDisplayModel := FoodDisplayModel{
-				Name:     f.Nutrient.Name,
-				Amount:   f.Amount,
-				UnitName: f.Nutrient.UnitName,
+			foodDisplayDetail := FoodDisplayDetail{
+				Name:   f.Nutrient.Name,
+				Amount: f.Amount,
 			}
 
-			foodDisplayModels = append(foodDisplayModels, foodDisplayModel)
+			foodDisplayModel.FoodDisplayDetails =
+				append(foodDisplayModel.FoodDisplayDetails,
+					foodDisplayDetail)
 		}
 	}
 
 	//we want to show highest to lowest grams of ingredients
-	sort.Slice(foodDisplayModels,
+	sort.Slice(foodDisplayModel.FoodDisplayDetails,
 		func(i, j int) bool {
-			return foodDisplayModels[j].Amount < foodDisplayModels[i].Amount
+			return foodDisplayModel.FoodDisplayDetails[j].Amount < foodDisplayModel.FoodDisplayDetails[i].Amount
 		})
 
-	return foodDisplayModels
+	return foodDisplayModel
 }
