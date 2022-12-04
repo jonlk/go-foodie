@@ -5,18 +5,14 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"os"
 
 	"github.com/jonlk/go-foodie/food"
 )
 
-const (
-	API_KEY = `<your api key goes here>`
-)
-
 func main() {
 
-	//TODO: pass in fdcid arg
-	url := fmt.Sprintf(`https://api.nal.usda.gov/fdc/v1/food/334147?api_key=%s`, API_KEY)
+	url := fmt.Sprintf(`https://api.nal.usda.gov/fdc/v1/food/334147?api_key=%s`, os.Getenv("USDA_API_KEY"))
 
 	req, _ := http.NewRequest("GET", url, nil)
 
