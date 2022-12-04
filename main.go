@@ -37,5 +37,8 @@ func main() {
 			}
 
 		}
+	} else {
+		println(err.Error())
+		panic("Failed")
 	}
 }
